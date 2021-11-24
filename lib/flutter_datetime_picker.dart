@@ -519,7 +519,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
     final cancel = _localeCancel();
 
     return Container(
-      height: theme.headerHeight,
+      height: theme.titleHeight,
       decoration: BoxDecoration(
         color: theme.headerColor ?? theme.backgroundColor,
         borderRadius: theme.headerBorderRadius,
@@ -528,7 +528,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
-            height: theme.headerHeight,
+            height: theme.titleHeight,
             child: CupertinoButton(
               pressedOpacity: 0.3,
               padding: EdgeInsetsDirectional.only(start: 16, top: 0),
@@ -545,7 +545,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
             ),
           ),
           Container(
-            height: theme.headerHeight,
+            height: theme.titleHeight,
             child: CupertinoButton(
               pressedOpacity: 0.3,
               padding: EdgeInsetsDirectional.only(end: 16, top: 0),
@@ -594,7 +594,7 @@ class _BottomPickerLayout extends SingleChildLayoutDelegate {
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
     double maxHeight = theme.pickerHeight;
     if (showTitleActions == true) {
-      maxHeight += (theme.headerHeight + theme.footerHeight);
+      maxHeight += theme.titleHeight;
     }
 
     return BoxConstraints(

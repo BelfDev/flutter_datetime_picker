@@ -11,8 +11,7 @@ class DatePickerTheme with DiagnosticableTreeMixin {
   final Color? headerColor;
 
   final double pickerHeight;
-  final double headerHeight;
-  final double footerHeight;
+  final double titleHeight;
   final double itemHeight;
 
   final BorderRadius? pickerBorderRadius;
@@ -25,8 +24,7 @@ class DatePickerTheme with DiagnosticableTreeMixin {
     this.backgroundColor = Colors.white,
     this.headerColor,
     this.pickerHeight = 210.0,
-    this.headerHeight = 44.0,
-    this.footerHeight = 0.0,
+    this.titleHeight = 44.0,
     this.itemHeight = 36.0,
     this.pickerBorderRadius,
     this.headerBorderRadius,
