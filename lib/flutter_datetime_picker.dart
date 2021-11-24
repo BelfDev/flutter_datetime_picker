@@ -392,7 +392,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
       flex: layoutProportion,
       child: Container(
         padding: EdgeInsets.all(8.0),
-        height: theme.containerHeight,
+        height: theme.pickerHeight,
         decoration: BoxDecoration(color: theme.backgroundColor),
         child: NotificationListener(
           onNotification: (ScrollNotification notification) {
@@ -592,7 +592,7 @@ class _BottomPickerLayout extends SingleChildLayoutDelegate {
 
   @override
   BoxConstraints getConstraintsForChild(BoxConstraints constraints) {
-    double maxHeight = theme.containerHeight;
+    double maxHeight = theme.pickerHeight;
     if (showTitleActions == true) {
       maxHeight += theme.titleHeight;
     }
