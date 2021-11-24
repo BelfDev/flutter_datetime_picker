@@ -31,6 +31,8 @@ class DatePicker {
     locale: LocaleType.en,
     DateTime? currentTime,
     DatePickerTheme? theme,
+    Widget? header,
+    Widget? footer,
   }) async {
     return await Navigator.push(
       context,
@@ -49,6 +51,8 @@ class DatePicker {
           minTime: minTime,
           locale: locale,
         ),
+        header: header,
+        footer: footer,
       ),
     );
   }
@@ -66,6 +70,8 @@ class DatePicker {
     locale: LocaleType.en,
     DateTime? currentTime,
     DatePickerTheme? theme,
+    Widget? header,
+    Widget? footer,
   }) async {
     return await Navigator.push(
       context,
@@ -83,6 +89,8 @@ class DatePicker {
           locale: locale,
           showSecondsColumn: showSecondsColumn,
         ),
+        header: header,
+        footer: footer,
       ),
     );
   }
@@ -99,6 +107,8 @@ class DatePicker {
     locale: LocaleType.en,
     DateTime? currentTime,
     DatePickerTheme? theme,
+    Widget? header,
+    Widget? footer,
   }) async {
     return await Navigator.push(
       context,
@@ -115,6 +125,8 @@ class DatePicker {
           currentTime: currentTime,
           locale: locale,
         ),
+        header: header,
+        footer: footer,
       ),
     );
   }
@@ -133,6 +145,8 @@ class DatePicker {
     locale: LocaleType.en,
     DateTime? currentTime,
     DatePickerTheme? theme,
+    Widget? header,
+    Widget? footer,
   }) async {
     return await Navigator.push(
       context,
@@ -151,6 +165,8 @@ class DatePicker {
           maxTime: maxTime,
           locale: locale,
         ),
+        header: header,
+        footer: footer,
       ),
     );
   }
@@ -167,6 +183,8 @@ class DatePicker {
     locale: LocaleType.en,
     BasePickerModel? pickerModel,
     DatePickerTheme? theme,
+    Widget? header,
+    Widget? footer,
   }) async {
     return await Navigator.push(
       context,
@@ -180,6 +198,8 @@ class DatePicker {
         barrierLabel:
             MaterialLocalizations.of(context).modalBarrierDismissLabel,
         pickerModel: pickerModel,
+        header: header,
+        footer: footer,
       ),
     );
   }
@@ -196,6 +216,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
     this.locale,
     RouteSettings? settings,
     BasePickerModel? pickerModel,
+    this.header,
+    this.footer,
   })  : this.pickerModel = pickerModel ?? DatePickerModel(),
         this.theme = theme ?? DatePickerTheme(),
         super(settings: settings);
@@ -207,6 +229,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   final LocaleType? locale;
   final DatePickerTheme theme;
   final BasePickerModel pickerModel;
+  final Widget? header;
+  final Widget? footer;
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 200);
@@ -256,6 +280,8 @@ class _DatePickerComponent extends StatefulWidget {
     this.onChanged,
     this.locale,
     this.borderRadius,
+    this.header,
+    this.footer,
   }) : super(key: key);
 
   final _DatePickerRoute route;
@@ -267,6 +293,10 @@ class _DatePickerComponent extends StatefulWidget {
   final LocaleType? locale;
 
   final BorderRadius? borderRadius;
+
+  final Widget? header;
+
+  final Widget? footer;
 
   @override
   State<StatefulWidget> createState() {
@@ -334,11 +364,12 @@ class _DatePickerState extends State<_DatePickerComponent> {
 
   Widget _renderPickerView(DatePickerTheme theme) {
     Widget itemView = _renderItemView(theme);
-    if (widget.route.showTitleActions == true) {
+    if (widget.header != null || widget.route.showTitleActions == true) {
       return Column(
         children: <Widget>[
-          _renderTitleActionsView(theme),
+          widget.header ?? _renderTitleActionsView(theme),
           itemView,
+          if (widget.footer != null) widget.footer!,
         ],
       );
     }
