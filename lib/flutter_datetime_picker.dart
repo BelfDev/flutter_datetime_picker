@@ -266,6 +266,8 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
         route: this,
         pickerModel: pickerModel,
         borderRadius: theme.pickerBorderRadius,
+        header: header,
+        footer: footer,
       ),
     );
     return InheritedTheme.captureAll(context, bottomSheet);
