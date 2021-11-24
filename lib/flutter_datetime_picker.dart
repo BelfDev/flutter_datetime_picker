@@ -371,7 +371,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           widget.header ?? _renderTitleActionsView(theme),
-          itemView,
+          Flexible(child: itemView),
           if (widget.footer != null) widget.footer!,
         ],
       );
