@@ -368,6 +368,7 @@ class _DatePickerState extends State<_DatePickerComponent> {
     Widget itemView = _renderItemView(theme);
     if (widget.header != null || widget.route.showTitleActions == true) {
       return Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           widget.header ?? _renderTitleActionsView(theme),
           itemView,
